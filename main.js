@@ -1,24 +1,27 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+let account = document.getElementById("account");
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+let btnDecrease = document.getElementsByClassName("btn")[0];
+let btnReset = document.getElementsByClassName("btn")[1];
+let btnIncrease = document.getElementsByClassName("btn")[2];
 
-setupCounter(document.querySelector('#counter'))
+let decrease = () => {
+  let currentValue = parseInt(account.textContent);
+  if (!isNaN(currentValue)) {
+    account.textContent = currentValue - 1;
+  }
+};
+
+let reset = () => {
+  account.textContent = 0;
+};
+
+let increase = () => {
+  let currentValue = parseInt(account.textContent);
+  if (!isNaN(currentValue)) {
+    account.textContent = currentValue + 1;
+  }
+};
+
+btnDecrease.addEventListener("click", decrease);
+btnReset.addEventListener("click", reset);
+btnIncrease.addEventListener("click", increase);
